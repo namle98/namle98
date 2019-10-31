@@ -1,0 +1,29 @@
+#anh1{
+    height: 50%;
+    width: 50%;
+    border: 50px;
+}
+#anh2{
+    position: relative;
+    height: 50%;
+    width: 50%;
+    border: 50px;
+}
+#anh3{
+    height: 50%;
+    width: 50%;
+    border: 50px;
+}
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+table, th, tr{
+    border:1px solid black;
+}
+#ML{
+    border-style: solid;
+    width: 200px;
+    height: 300px;
+    background-color: burlywood;
+}
