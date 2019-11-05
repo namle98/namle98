@@ -272,6 +272,10 @@ const pipes = {
             if(p.x + this.w <= 0){
                 this.position.shift();
                // tính điểm
+                
+                
+                
+                
             }
         }
     },
