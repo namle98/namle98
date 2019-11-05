@@ -1,0 +1,10 @@
+element.style {
+    display: block;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    width: 455px;
+    height: 625px;
+    margin-left: 448px;
+    margin-right: -463px;
+    margin-top: 0px;
+}
