@@ -163,14 +163,8 @@ const bird = {
         }else{
             this.speed += this.gravity;
             this.y += this.speed;
+            //thêm va chạm với FOREGROUND
             
-            if(this.y + this.h/2 >= cvs.height - fg.h){
-                this.y = cvs.height - fg.h - this.h/2;
-                if(state.current == state.game){
-                    state.current = state.over;
-                    DIE.play();
-                }
-            }
             
             // IF THE SPEED IS GREATER THAN THE JUMP MEANS THE BIRD IS FALLING DOWN
             if(this.speed >= this.jump){
@@ -267,19 +261,9 @@ const pipes = {
         for(let i = 0; i < this.position.length; i++){
             let p = this.position[i];
             
-            let bottomPipeYPos = p.y + this.h + this.gap;
-            
-            // COLLISION DETECTION
-            // TOP PIPE
-            if(bird.x + bird.radius > p.x && bird.x - bird.radius < p.x + this.w && bird.y + bird.radius > p.y && bird.y - bird.radius < p.y + this.h){
-                state.current = state.over;
-                HIT.play();
-            }
-            // BOTTOM PIPE
-            if(bird.x + bird.radius > p.x && bird.x - bird.radius < p.x + this.w && bird.y + bird.radius > bottomPipeYPos && bird.y - bird.radius < bottomPipeYPos + this.h){
-                state.current = state.over;
-                HIT.play();
-            }
+              // thêm va chạm cột
+
+              
             
             // MOVE THE PIPES TO THE LEFT
             p.x -= this.dx;
@@ -287,10 +271,7 @@ const pipes = {
             // if the pipes go beyond canvas, we delete them from the array
             if(p.x + this.w <= 0){
                 this.position.shift();
-                score.value += 1;
-                SCORE_S.play();
-                score.best = Math.max(score.value, score.best);
-                localStorage.setItem("best", score.best);
+               // tính điểm
             }
         }
     },
