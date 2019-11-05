@@ -8,3 +8,10 @@ element.style {
     margin-right: -463px;
     margin-top: 0px;
 }
+#bird{
+    display: block;
+    user-select: none;
+    touch-action: auto;
+   
+   
+}
