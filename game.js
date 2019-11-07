@@ -60,7 +60,7 @@ cvs.addEventListener("click", function(evt){
             let clickY = evt.clientY - rect.top;
             
             // CHECK IF WE CLICK ON THE START BUTTON
-            if(clickX >= startBtn.x && clickX <= startBtn.x + startBtn.w && clickY >= startBtn.y && clickY <= startBtn.y + startBtn.h){
+            if(clickX ){
                 pipes.reset();
                 bird.speedReset();
                 score.reset();
@@ -235,7 +235,7 @@ const pipes = {
     
     w : 53,
     h : 400,
-    gap : 115,
+    gap : 85,
     maxYPos : -150,
     dx : 2,
     
@@ -324,8 +324,7 @@ const score= {
             ctx.fillText(this.value, 225, 186);
             ctx.strokeText(this.value, 225, 186);
             // BEST SCORE
-            ctx.fillText(this.best, 225, 228);
-            ctx.strokeText(this.best, 225, 228);
+           
         }
     },
     
