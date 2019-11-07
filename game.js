@@ -164,7 +164,12 @@ const bird = {
             this.speed += this.gravity;
             this.y += this.speed;
             //thêm va chạm với FOREGROUND
-            
+            if(this.y + this .h/2 >= cvs.height-fg.h){
+                this.y = cvs.height - fg.h - this.h/2;
+                if(state.current == state.game){
+                    state.current = state.over; 
+                }
+            }
             
             // IF THE SPEED IS GREATER THAN THE JUMP MEANS THE BIRD IS FALLING DOWN
             if(this.speed >= this.jump){
@@ -263,11 +268,23 @@ const pipes = {
             
               // thêm va chạm cột
 
-              
+            
             
             // MOVE THE PIPES TO THE LEFT
-            p.x -= this.dx;
             
+            let bottomPipeYPos = p.y +  this.h + this.gap
+            
+            //COLLISION DETECTION
+            //TOP PIPE
+            if(bird.x + bird.radius > p.x && bird.x - bird.radius < p.x + this.w && bird.y + bird.radius > p.y && bird.y - bird.radius < p.y + this.h ){
+                state.current = state.over;
+            }
+            //BOTTOM PIPE
+            if(bird.x + bird.radius > p.x && bird.x - bird.radius < p.x + this.w && bird.y + bird.radius > bottomPipeYPos && bird.y - bird.radius < bottomPipeYPos + this.h ){
+                state.current = state.over;
+            }
+            // MOVE THE PIPE TO THE LEFT
+            p.x -= this.dx;
             // if the pipes go beyond canvas, we delete them from the array
             if(p.x + this.w <= 0){
                 this.position.shift();
@@ -347,3 +364,4 @@ function loop(){
     requestAnimationFrame(loop);
 }
 loop();
+
