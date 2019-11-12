@@ -266,15 +266,10 @@ const pipes = {
         for(let i = 0; i < this.position.length; i++){
             let p = this.position[i];
             
-              // thêm va chạm cột
-
-            
-            
-            // MOVE THE PIPES TO THE LEFT
+            //COLLISION DETECTION
             
             let bottomPipeYPos = p.y +  this.h + this.gap
             
-            //COLLISION DETECTION
             //TOP PIPE
             if(bird.x + bird.radius > p.x && bird.x - bird.radius < p.x + this.w && bird.y + bird.radius > p.y && bird.y - bird.radius < p.y + this.h ){
                 state.current = state.over;
@@ -289,10 +284,10 @@ const pipes = {
             if(p.x + this.w <= 0){
                 this.position.shift();
                // tính điểm
-                
-                
-                
-                
+               score.value += 1;
+               SCORE_S.play();
+               score.best = Math.max(score.value, score.best);
+               localStorage.setItem("best", score.best);
             }
         }
     },
@@ -304,7 +299,7 @@ const pipes = {
 }
 
 // SCORE
-const score= {
+const score = {
     best : parseInt(localStorage.getItem("best")) || 0,
     value : 0,
     
@@ -318,13 +313,13 @@ const score= {
             ctx.fillText(this.value, cvs.width/2, 50);
             ctx.strokeText(this.value, cvs.width/2, 50);
             
-        }else if(state.current == state.over){
+        } else if(state.current == state.over){
             // SCORE VALUE
             ctx.font = "25px Teko";
             ctx.fillText(this.value, 225, 186);
             ctx.strokeText(this.value, 225, 186);
             // BEST SCORE
-           
+          
         }
     },
     
