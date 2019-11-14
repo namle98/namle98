@@ -268,7 +268,7 @@ const pipes = {
             let p = this.position[i];
             
             let bottomPipeYPos = p.y +  this.h + this.gap
-            
+
             //COLLISION DETECTION
             //TOP PIPE
             if(bird.x + bird.radius > p.x && bird.x - bird.radius < p.x + this.w && bird.y + bird.radius > p.y && bird.y - bird.radius < p.y + this.h ){
@@ -298,11 +298,11 @@ const pipes = {
     reset : function(){
         this.position = [];
     }
-    
+
 }
 
 // SCORE
-const score= {
+const score = {
     best : parseInt(localStorage.getItem("best")) || 0,
     value : 0,
     
@@ -316,7 +316,7 @@ const score= {
             ctx.fillText(this.value, cvs.width/2, 50);
             ctx.strokeText(this.value, cvs.width/2, 50);
             
-        }else if(state.current == state.over){
+        } else if(state.current == state.over){
             // SCORE VALUE
             ctx.font = "25px Teko";
             ctx.fillText(this.value, 225, 186);
