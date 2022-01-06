@@ -377,3 +377,5 @@ function loop(){
 }
 loop();
 
+const setUpGitForMac = "Tests"
+
